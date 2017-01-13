@@ -122,6 +122,8 @@ class ActivityLogger
     public function ofType(string $logType)
     {
         $this->logType = $logType;
+
+        return $this;
     }
 
     /**
