@@ -18,6 +18,8 @@ class ActivityLogger
 
     protected $logName = '';
 
+    protected $logType = '';
+
     /** @var bool */
     protected $logEnabled;
 
@@ -117,6 +119,11 @@ class ActivityLogger
         return $this->useLog($logName);
     }
 
+    public function ofType(string $logType)
+    {
+        $this->logType = $logType;
+    }
+
     /**
      * @param string $description
      *
@@ -139,6 +146,8 @@ class ActivityLogger
         }
 
         $activity->properties = $this->properties;
+
+        $activity->log_type = $this->logType;
 
         $activity->description = $this->replacePlaceholders($description, $activity);
 

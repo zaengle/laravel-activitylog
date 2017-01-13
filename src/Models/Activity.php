@@ -76,6 +76,16 @@ class Activity extends Eloquent
     }
 
     /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $logType
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfType(Builder $query, string $logType) : Builder
+    {
+        return $query->where('log_type', $logType);
+    }
+
+    /**
      * Scope a query to only include activities for a given subject.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
